@@ -1,6 +1,6 @@
 {
     "description": "项目配置文件。",
-    "miniprogramRoot": "miniprogram/",
+    "miniprogramRoot": "",
     "cloudfunctionRoot": "cloudfunctions/",
     "packOptions": {
         "ignore": [],
@@ -29,8 +29,13 @@
             "outputPath": ""
         },
         "useIsolateContext": false,
-        "packNpmManually": false,
-        "packNpmRelationList": [],
+        "packNpmManually": true,
+        "packNpmRelationList": [
+            {
+                "packageJsonPath": "./package.json",
+                "miniprogramNpmDistDir": "./"
+            }
+        ],
         "minifyWXSS": true,
         "disableUseStrict": false,
         "minifyWXML": true,
@@ -50,5 +55,6 @@
     "editorSetting": {
         "tabIndent": "auto",
         "tabSize": 4
-    }
+    },
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

@@ -1,0 +1,47 @@
+.postItem {
+  display: flex;
+  padding: 30rpx;
+  border-bottom: 1rpx solid var(--Color-FontE);
+}
+.postItem .userPic .image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+  margin-top: 40rpx;
+}
+.postItem .content1{
+
+ display: flex;
+  margin-left: 10rpx;
+  font-size: 28 rpx;
+  flex-direction: column;
+
+}
+.postItem .content2{
+
+    display: flex;
+      margin-left: 10rpx;
+      font-size: 28 rpx;
+      flex-direction: column;
+    
+    }
+.postItem .content1 .box1{
+  height: 70rpx;
+  width:  300rpx;
+  padding-left: 10rpx;
+}
+.postItem .content1 .box2{
+  height: 70rpx;
+  width:  300rpx;
+  padding-left: 10rpx;
+}
+.postItem .content2 .box3{
+    height: 70rpx;
+    width:  280rpx;
+    padding-right: 20rpx;
+}
+.postItem .content2 .box4{
+    height: 70rpx;
+    width:  280rpx;
+    padding-right: 20rpx;
+}

@@ -1,0 +1,44 @@
+<view class="container">
+
+<view class="cotent">
+    <van-radio-group value="{{ radio }}" bind:change="convertType" direction="horizontal" class="radio">
+
+        <van-radio name="RMB-SGD">换新币</van-radio>
+        <van-radio name="SGD-RMB">换人民币</van-radio>
+</van-radio-group>
+<van-cell-group>
+  <van-field
+    value="{{ amount }}"
+    required
+    clearable
+    label="想换金额"
+    placeholder=""
+    bind:click-icon="onClickIcon"
+    bind:change="onChangeAmount"
+  />
+  <van-field
+    value="{{ wxnumber }}"
+    required
+    clearable
+    label="wx号"
+    placeholder="请输入微信号"
+    border="{{ false }}"
+    bind:change="onChangeWxnumber"
+    
+  />
+  <van-field
+    value="{{ remark }}"
+    clearable
+    label="备注/留言"
+    type="textarea"
+    placeholder="请输入留言"
+    autosize
+    border="{{ false }}"
+    bind:change="onChangeReamrk"
+  />
+</van-cell-group>
+<view class="button">
+<van-button type="primary" bindtap="onPublish"> 发布 </van-button>
+</view>
+</view>
+</view>

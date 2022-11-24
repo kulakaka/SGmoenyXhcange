@@ -1,0 +1,22 @@
+
+<!--components/PostItem.wxml-->
+<view class="postItem">
+  <!-- 头像 -->
+  <view class="userPic">
+    <image class="image" src="{{postItem.author_avatar}}" />
+  </view>
+  <!-- 内容区 -->
+  <view class="content1">
+  <!-- amount -->
+  <view class="box1" >{{postItem.amount}}</view>
+  <!-- contact number -->
+  <view class="box2">{{postItem.wxnuber}}</view>
+</view>
+  <view class="content2">
+<!-- remark -->
+    <view class="box3">{{postItem.remark}}</view>
+    <!-- time -->
+    <view class="box4">{{postItem.publish_date}}</view>
+  </view>
+  
+</view>

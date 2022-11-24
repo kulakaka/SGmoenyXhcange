@@ -1,0 +1,18 @@
+/* pages/publish/publish.wxss */
+.container
+{
+    width: 100vw;
+  height: 100vh;
+  padding: 50rpx;
+}
+.banner{
+    font-size: 50rpx;
+}
+.content{
+    margin-top: 40rpx;
+}
+
+.content .radio{
+    justify-content: center;
+    padding: 20rpx;
+}

@@ -1,0 +1,31 @@
+<view class="container">
+
+<van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
+    <van-tab title="换人民币">
+      <PostList>
+        <PostItem
+        wx:for="{{SgdToRmbList}}"
+        wx:key="_id"
+        bindtap="copyContact" 
+        id="{{item._id}}" 
+        postItem="{{item}}" 
+        bind:preview="preview" 
+        />
+        
+      </PostList>
+    </van-tab>
+    <van-tab title="换新币">
+      <PostList>
+        <PostItem
+        wx:for="{{RmbToSgdList}}"
+        wx:key="_id"
+        bindtap="copyContact" 
+        id="{{item._id}}" 
+        postItem="{{item}}" 
+        bind:preview="preview" 
+        />
+      </PostList>
+    </van-tab>
+  </van-tabs>
+
+</view>
