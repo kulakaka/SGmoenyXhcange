@@ -6,10 +6,10 @@
         <PostItem
         wx:for="{{SgdToRmbList}}"
         wx:key="_id"
-        bindtap="copyContact" 
+        bindlongpress="copyContact" 
         id="{{item._id}}" 
         postItem="{{item}}" 
-        bind:preview="preview" 
+       
         />
         
       </PostList>
@@ -19,10 +19,10 @@
         <PostItem
         wx:for="{{RmbToSgdList}}"
         wx:key="_id"
-        bindtap="copyContact" 
+        bindlongpress="copyContact" 
         id="{{item._id}}" 
         postItem="{{item}}" 
-        bind:preview="preview" 
+       
         />
       </PostList>
     </van-tab>

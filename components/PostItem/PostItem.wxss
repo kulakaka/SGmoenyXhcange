@@ -1,13 +1,13 @@
 .postItem {
   display: flex;
-  padding: 30rpx;
+ 
   border-bottom: 1rpx solid var(--Color-FontE);
 }
 .postItem .userPic .image {
   width: 90rpx;
   height: 90rpx;
   border-radius: 10rpx;
-  margin-top: 40rpx;
+  margin-top: 23rpx;
 }
 .postItem .content1{
 

@@ -1,4 +1,7 @@
 // pages/index/index.js
+
+import { getdate } from '../../utils/date'
+
 const db = wx.cloud.database()
 const user = db.collection('User')
 const post = db.collection('Post')
@@ -61,6 +64,7 @@ Page({
      */
     onPullDownRefresh() {
 
+      this.getPostList(this.data.active)
     },
 
     /**
@@ -81,6 +85,13 @@ Page({
       this.setData({ active: event.detail.name })
     },
 
+    copyContact(e){
+      // wx.setClipboardData({
+      //   data: e.data
+      // })
+      console.log("copy wxnumber",e.currentTarget.dataset)
+    
+    },
 
     getUserInfo() {
       user.get().then(res => {
@@ -91,7 +102,7 @@ Page({
             url: '/pages/login/login'
           })
         }
-        console.log("users",res.data)
+        
       })
     },
    
@@ -103,8 +114,8 @@ Page({
         name:'getPostList',
         data
       })
-      
-      console.log("This is postlist: ",result.data);
+
+      result.data?.forEach(item => item.publish_date = getdate(item.publish_date))
 
       let postList = result.data.length ? result.data : []
 
