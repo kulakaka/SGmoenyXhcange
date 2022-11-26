@@ -1,0 +1,12 @@
+<!--pages/myPost/myPost.wxml-->
+<view class="container">
+  <PostList>
+    <block wx:for="{{postList}}" wx:key="_id">
+      <PostItem wx:key="_id"
+	  	id="{{item._id}}" 
+	   postItem="{{item}}" 
+	   operation="{{true}}" 
+	   bindlongpress="onDelete" />
+    </block>
+  </PostList>
+</view>

@@ -22,10 +22,11 @@
         bindlongpress="copyContact" 
         id="{{item._id}}" 
         postItem="{{item}}" 
-       
         />
       </PostList>
     </van-tab>
+
+    
   </van-tabs>
 
 </view>

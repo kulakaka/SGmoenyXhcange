@@ -12,9 +12,11 @@ Page({
      * 页面的初始数据
      */
     data: {
+      test123:123123,
       SgdToRmbList:[],
       RmbToSgdList:[],
       active: 0 // tab的状态
+      
 
 
     },
@@ -25,9 +27,7 @@ Page({
     onLoad() {
 
         this.getUserInfo()
-        this.getPostList(1)
-        this.getPostList(0)
-        
+
 
     },
 
@@ -42,6 +42,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+      this.getPostList(1)
+      this.getPostList(0)
 
     },
 
@@ -86,10 +88,45 @@ Page({
     },
 
     copyContact(e){
-      // wx.setClipboardData({
-      //   data: e.data
-      // })
-      console.log("copy wxnumber",e.currentTarget.dataset)
+
+      let currentid = e.currentTarget.id
+      let tabstatus = this.data.active
+
+      if (tabstatus)
+      {
+        for(let i = 0; i<this.data.RmbToSgdList.length; i++)
+        {
+          if (this.data.RmbToSgdList[i]._id===currentid)
+          {
+              wx.setClipboardData({
+              data: this.data.RmbToSgdList[i].wxnumber,
+              success(res){
+                wx.showToast({
+                  title: '已复制wx号',
+                })
+              }
+            })
+          }
+        }
+      }
+      else
+      {
+        for (let i = 0; i<this.data.SgdToRmbList.length; i++)
+      {
+        if (this.data.SgdToRmbList[i]._id===currentid)
+          {
+            wx.setClipboardData({
+              data: this.data.SgdToRmbList[i].wxnumber,
+              success(res){
+                wx.showToast({
+                  title: '已复制wx号',
+                })
+              }
+            })
+          }
+      } 
+    }
+
     
     },
 
@@ -119,18 +156,26 @@ Page({
 
       let postList = result.data.length ? result.data : []
 
+     
       if (type)
       {
-        postList = RmbToSgdList.unshift(result.data)
+        //postList = RmbToSgdList.unshift(result.data)
+        postList = result.data
       }
       else
       {
-        postList = SgdToRmbList.unshift(result.data)
+        //postList = SgdToRmbList.unshift(result.data)
+        postList = result.data
+
       }
 
       this.setData({[dataType]:postList})
 
-      console.log("this is rmb list",RmbToSgdList)
-      console.log("this is sgd list",SgdToRmbList)
+      ///console.log("this is ",dataType,"List: ",postList)
+
+ 
     }
+
+
+
 })

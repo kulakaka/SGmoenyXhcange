@@ -31,7 +31,21 @@ Page({
     wx.navigateTo({
       url: '/pages/myPost/myPost'
     })
-  }
+  },
+  // 跳转到关于我们
+  toAboutUs() {
+    wx.navigateTo({
+      url: '/pages/aboutUs/aboutUs'
+    })
+  },
+  
+  // 跳转到退出登录
+  toSignOut() {
+    wx.navigateTo({
+      url: '/pages/signOut/signOut'
+    })
+  },
+
 
  
 })

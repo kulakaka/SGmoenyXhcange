@@ -55,5 +55,24 @@ if(event.type===0){
   }
   }
 }
- 
+
+
+//get my post
+if(event.id) screen._openid = event.id
+try{
+  let postList = await db.collection('Post').aggregate().match(screen).end()
+
+  return {
+    code:0,
+    data:postList.list,
+    success:true
+  }
+}
+catch(err) {
+  console.error('transaction error')
+  return {
+    code: 1,
+    success: false
+  }
+}
 }

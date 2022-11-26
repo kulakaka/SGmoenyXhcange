@@ -8,15 +8,15 @@
   <!-- 内容区 -->
   <view class="content1">
   <!-- amount -->
-  <view class="box1" >{{postItem.amount}}</view>
+  <view class="box1" >金额：{{postItem.amount}}</view>
   <!-- contact number -->
-  <view class="box2">{{postItem.wxnuber}}</view>
+  <view class="box2">wx号: {{postItem.wxnumber}}</view>
 </view>
   <view class="content2">
 <!-- remark -->
-    <view class="box3">{{postItem.remark}}</view>
+    <view class="box3">备注：{{postItem.remark}}</view>
     <!-- time -->
-    <view class="box4">{{postItem.publish_date}}</view>
+    <view class="box4">日期：{{postItem.publish_date}}</view>
   </view>
   
 </view>
