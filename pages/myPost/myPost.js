@@ -18,9 +18,11 @@ Page({
 
 
 	async getPostList(){
+		
 		let data ={
-			id:wx.getStorage("currentUser")._openid,
-		}
+			id:wx.getStorage("currentUser")._openid
+
+		};
 
 		let { result } = await wx.cloud.callFunction({
 			name: 'getPostList',
@@ -32,20 +34,28 @@ Page({
 		let postList = result.data.length ? result.data : []
 
 
-    	this.setData({ postList })
+		this.setData({ postList })
+		
 
 	},
-	async onDelete(event){
-		wx.showModel({
+
+	
+	 onDelete(event){
+		 //console.log(event.currentTarget)
+		
+		wx.showModal({
 		  title:"提示",
-		  content:"确定删除该帖子吗？"
-		}).then(res=>{
+		  content:"确定删除该帖子吗？",
+		  showCancel:true
+		}).then(async res=>{
 		  if(res.confirm)
 		  {
+			
 			let postid = event.currentTarget.id
+			let data = {postid}
 			await wx.cloud.callFunction({
 				name:"deletePost",
-				postid
+				data
 				
 			}).then(()=>{
 				wx.reLaunch({

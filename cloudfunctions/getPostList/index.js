@@ -11,12 +11,17 @@ exports.main = async (event, context) => {
   let type1 = {options:'SGD-RMB'}
   let type2 = {options:'RMB-SGD'}
   let screen ={status:0}
-   
+ //const skip = event.pageSize * (event.pageIndex -1)
+
+
  //get RmbToSgdList
  if(event.type===1){
   try{
     let postList = await db.collection('Post').
-    aggregate().match(screen).match(type1).sort(sort).end()
+    aggregate().match(screen).match(type1).sort(sort)
+    // .skip(skip)
+    // .limit(event.pageSize)
+    .end()
 
     return {
       code: 0,
@@ -38,7 +43,10 @@ exports.main = async (event, context) => {
 if(event.type===0){
   try{
     let postList = await db.collection('Post').
-    aggregate().match(type2).sort(sort).end()
+    aggregate().match(screen).match(type2).sort(sort)
+    // .skip(skip)
+    // .limit(event.pageSize)
+    .end()
 
     return {
       code: 0,
@@ -48,7 +56,7 @@ if(event.type===0){
   }
   catch(err){
     console.error('transaction error')
-  console.error(err)
+    console.error(err)
   return {
     code: 1,
     success: false

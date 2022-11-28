@@ -13,8 +13,8 @@
   <BlockBox>
     <van-cell-group>
       <van-cell title="我的贴子" is-link border="{{false}}" bindtap="toMyPost"/>
-      <van-cell title="关于我们" is-link border="{{false}}" />
-      <van-cell title="退出登录" is-link border="{{false}}" />
+      <van-cell title="关于作者" is-link border="{{false}}" bindtap="toAboutMe" />
+      <van-cell title="退出登录" is-link border="{{false}}" bindtap="toSignOut"/>
     </van-cell-group>
   </BlockBox>
 

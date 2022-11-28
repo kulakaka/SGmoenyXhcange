@@ -1,11 +1,10 @@
 // pages/me/me.js
 const db = wx.cloud.database()
-const Administrator = db.collection('Administrator')
 
 Page({
   data: {
     userInfo: {}, // 用户信息
-    isAdmin: false // 是否为超级管理员
+
   },
 
   /**
@@ -16,15 +15,8 @@ Page({
     let userInfo = wx.getStorageSync('currentUser')
     this.setData({ userInfo })
 
-    // 获取管理员信息
-    this.isAdministrator()
   },
 
-  // 获取管理员信息
-  async isAdministrator() {
-    let { data } = await Administrator.where({_openid: this.data.userInfo._openid}).get()
-    if(data[0].super_admin === 0) this.setData({ isAdmin: true })
-  },
 
   // 跳转到我的帖子
   toMyPost() {
@@ -33,16 +25,16 @@ Page({
     })
   },
   // 跳转到关于我们
-  toAboutUs() {
+  toAboutMe() {
     wx.navigateTo({
-      url: '/pages/aboutUs/aboutUs'
+      url: '/pages/aboutMe/aboutMe'
     })
   },
   
   // 跳转到退出登录
   toSignOut() {
     wx.navigateTo({
-      url: '/pages/signOut/signOut'
+      url: '/pages/signout/signout'
     })
   },
 

@@ -15,6 +15,11 @@ Page({
       test123:123123,
       SgdToRmbList:[],
       RmbToSgdList:[],
+      // rmbPageIndex:1,
+      // sgdPageIndex:1,
+      // rmbReachBottom:false,
+      // sgdReachBottom:false,
+      // pageSize:7,
       active: 0 // tab的状态
       
 
@@ -28,53 +33,19 @@ Page({
 
         this.getUserInfo()
 
-
+        this.getPostList(1)
+        this.getPostList(0)
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
+  
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-      this.getPostList(1)
-      this.getPostList(0)
+
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-      this.getPostList(this.data.active)
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
 
     /**
      * 用户点击右上角分享
@@ -144,9 +115,15 @@ Page({
     },
    
    async getPostList(type){
-      let data = {type}
+  
       let dataType = !type ? 'SgdToRmbList':'RmbToSgdList'
       let {SgdToRmbList,RmbToSgdList} = this.data
+      let data = {type}
+
+      //data.pageIndex = !type ? rmbPageIndex:sgdPageIndex
+
+
+
       let { result } = await wx.cloud.callFunction({
         name:'getPostList',
         data
@@ -156,25 +133,48 @@ Page({
 
       let postList = result.data.length ? result.data : []
 
-     
+    //    // 如果没有数据了则将 reachBottom 设为 true
+    // if(!type && !result.data.length) { 
+    //   this.setData({ sgdReachBottom: true })
+    // } else if(type && !result.data.length) {
+    //   this.setData({ rmbReachBottom: true })
+    // }
       if (type)
       {
-        //postList = RmbToSgdList.unshift(result.data)
         postList = result.data
       }
       else
       {
-        //postList = SgdToRmbList.unshift(result.data)
         postList = result.data
 
       }
 
       this.setData({[dataType]:postList})
 
-      ///console.log("this is ",dataType,"List: ",postList)
 
  
     }
+
+    // onReachBottom() {
+    //   let { rmbReachBottom, sgdReachBottom, rmbPageIndex, sgdPageIndex, active } = this.data
+  
+    //   // 判断当前为最新/最热
+    //   if(!active) {
+    //     // 如果到底部则返回
+    //     if(rmbReachBottom) return
+    //     // 分页+1
+    //     this.setData({ rmbPageIndex: ++rmbPageIndex })
+    //     // 获取数据
+    //     this.getPostList(active)
+    //   } else {
+    //     // 如果到底部则返回
+    //     if(sgdReachBottom) return
+    //     // 分页+1
+    //     this.setData({ sgdPageIndex: ++sgdPageIndex })
+    //     // 获取数据
+    //     this.getPostList(active)
+    //   }
+    // }
 
 
 
